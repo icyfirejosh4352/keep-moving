@@ -1,0 +1,16 @@
+Custom Non-Commercial License
+
+This project is open for learning, reference, and modification — but not for commercial use.
+
+You are free to:
+- View and study the code
+- Use parts of the code in your own personal or educational projects
+- Fork the project for non-commercial development
+
+You are NOT allowed to:
+- Sell, license, or commercially distribute this game or its code/assets
+- Use the game or its parts in any commercial product without written permission from the author
+
+For commercial inquiries or licensing, please contact: icyfirejosh4352@gmail.com
+
+© 2025 icyfirejosh4352. All rights reserved.
