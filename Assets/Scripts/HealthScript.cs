@@ -53,7 +53,7 @@ public class HealthScript : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D c)
     {
-        Debug.Log("collided with" + c.gameObject.name);
+        Debug.Log("collided with " + c.gameObject.name);
         // if (c.gameObject.layer == 7)
         // {
         //     if (c.gameObject.CompareTag("Flying enemy"))

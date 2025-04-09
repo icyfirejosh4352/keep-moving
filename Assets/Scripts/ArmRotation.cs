@@ -7,7 +7,7 @@ public class ArmRotation : MonoBehaviour
     public int rotationOffset = 0;
 
     public float rotZ;
-    // Update is called once per frame
+    // TODO: add the recoil mechanic. (remember to use trignometry)
     void Update()
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;

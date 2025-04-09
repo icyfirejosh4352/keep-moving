@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public Rigidbody2D PlayerRB;
     public HealthScript PlayerHealth;
     public float DMGMultiplier = 1f;
+    public float DMGdegenRate = 0.4f;
+    public float DMGmultMax = 10f;
     public TMP_Text text;
     public TMP_Text TimeText;
     public RectTransform bar;
@@ -23,6 +25,9 @@ public class GameManager : MonoBehaviour
     }
     void FixedUpdate()
     {
+        //-------------------------------timer--------------------------------//
+        //this section is purely AI.
+        //yes. I am dissappointed in myself.
         if(TimerRunning)
         {
             elapsedTime += Time.deltaTime;
@@ -31,29 +36,38 @@ public class GameManager : MonoBehaviour
         int seconds = Mathf.FloorToInt(elapsedTime % 60f);
         int milliseconds = Mathf.FloorToInt((elapsedTime * 1000f) % 1000f);
         TimeText.text = $"{minutes:00}:{seconds:00}.{milliseconds:000}";
+        //-------------------------------------------------------------------//
 
+
+        //----------------------------DMG Multiplier-------------------------//
+        /*
+        simply uses the magnitude of the player's movement to decide how much the multiplier
+        should increase.
+        */
         if(PlayerRB.linearVelocity.magnitude > 0)
         {
-            if(DMGMultiplier <= 10)
+            if(DMGMultiplier <= DMGmultMax)
             {
-                DMGMultiplier += 0.1f;
+                DMGMultiplier += PlayerRB.linearVelocity.magnitude;
             }
         }
         else
         {
             if(DMGMultiplier > 1)
             {
-                DMGMultiplier -= 0.4f;
+                DMGMultiplier -= DMGdegenRate;
             }else if(DMGMultiplier < 1)
             {
                 DMGMultiplier = 1;
-            }else if(DMGMultiplier > 10)
+            }else if(DMGMultiplier > DMGmultMax)
             {
-                DMGMultiplier = 10;
+                DMGMultiplier = DMGmultMax;
             }
         }
         text.text = DMGMultiplier.ToString("F2");
+        //-------------------------------------------------------------------//
 
+        //-------------------------respawn n stuff---------------------------//
         if(PlayerHealth.Health <= 0 && Input.GetKey(KeyCode.R))
         {
             // Get the active scene's name
@@ -67,5 +81,6 @@ public class GameManager : MonoBehaviour
             string sceneName = SceneManager.GetActiveScene().name;
             SceneManager.LoadScene(sceneName);
         }
+        //-------------------------------------------------------------------//
     }
 }
