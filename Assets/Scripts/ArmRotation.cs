@@ -10,6 +10,7 @@ public class ArmRotation : MonoBehaviour
     // TODO: add the recoil mechanic. (remember to use trignometry)
     void Update()
     {
+        //ripped straight out of brackey's video.
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         difference.Normalize(); 
 
