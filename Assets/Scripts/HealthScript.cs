@@ -66,6 +66,8 @@ public class HealthScript : MonoBehaviour
             weapons.SetActive(false);
             DeathScreen.SetActive(true);
             rb.constraints = RigidbodyConstraints2D.None;
+            //a bit of spin
+            rb.AddTorque(1);
         }
     }
     void OnCollisionEnter2D(Collision2D c)

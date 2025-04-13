@@ -7,6 +7,8 @@ public class PistolScript : MonoBehaviour
     public GameObject bullet;
     public GameObject FirePoint;
     public GameObject AmmoBar;
+    public AudioClip audioClip;
+    public AudioSource audioSource;
     public int magCapacity = 10;
     public int magAmt = 10;
     public float fireRate = 0f;
@@ -20,6 +22,7 @@ public class PistolScript : MonoBehaviour
             {
                 Debug.Log("shot");
                 Instantiate(bullet, FirePoint.transform.position, FirePoint.transform.rotation);
+                audioSource.PlayOneShot(audioClip);
                 magAmt--;
             }
         }else if (magAmt > 0)

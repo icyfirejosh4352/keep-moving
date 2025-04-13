@@ -48,7 +48,10 @@ public class GameManager : MonoBehaviour
         {
             if(DMGMultiplier <= DMGmultMax)
             {
-                DMGMultiplier += PlayerRB.linearVelocity.magnitude;
+                DMGMultiplier += 0.4f;
+            }else if (DMGMultiplier > DMGmultMax)
+            {
+                DMGMultiplier = DMGmultMax;
             }
         }
         else
